@@ -1,0 +1,12 @@
+{
+  "EventBusOption": {
+    "MQProvider": "RabbitMQ",
+    "Host": "127.0.0.1",
+    "Port": "5672",
+    //"Username": "qlgd_rabbit",
+    //"Password": "123456",
+    "Username": "guest",
+    "Password": "guest"
+  },
+  "EventHandler.DLL": "XichLip.Services"
+}

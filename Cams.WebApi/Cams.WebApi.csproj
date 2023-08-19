@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Cams.WebApi</RootNamespace>
+    <AssemblyName>Cams.WebApi</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Compile Remove="dlls\**" />
+    <Compile Remove="UserBus\**" />
+    <Content Remove="bin\**" />
+    <Content Remove="dlls\**" />
+    <Content Remove="UserBus\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="dlls\**" />
+    <EmbeddedResource Remove="UserBus\**" />
+    <None Remove="bin\**" />
+    <None Remove="dlls\**" />
+    <None Remove="UserBus\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Consul" Version="1.6.1.1" />
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="EPPlus" Version="6.2.7" />
+    <PackageReference Include="EventBus.RabbitMQ.Standard" Version="3.1.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+	
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.10.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="3.1.13" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="SolrNet.Core" Version="1.0.19" />
+    <PackageReference Include="SolrNet.Microsoft.DependencyInjection" Version="1.0.19" />
+    <PackageReference Include="SolrNetCore" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.9.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1"></PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WorkSimple.Infrastructure">
+      <HintPath>..\dlls\WorkSimple.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591 </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591 </NoWarn>
+  </PropertyGroup>
+
+
+
+</Project>

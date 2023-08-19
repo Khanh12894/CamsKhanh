@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    environment {
+        dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
+    }
+    stages {
+        stage('Checkout Stage') {
+            steps {
+               git credentialsId: '5ba5e0da-116a-47df-8e8c-639f4654358c', url: 'https://github.com/Khanh12894/Cams.git', branch: 'master'
+            }
+        }
+        stage('Build Stage') {
+            steps {
+                bat 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Cams\\Cams.Api.sln --configuration Release'
+            }
+        }
+       
+        stage("Release Stage") {
+            steps {
+                bat 'dotnet build %WORKSPACE%\\Cams.Api.sln /p:PublishProfile=" %WORKSPACE%\\Cams\\Properties\\PublishProfiles\\FolderProfile1.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
+            }
+        }
+        stage('Deploy Stage') {
+            steps {
+                //Deploy application on IIS
+                bat 'net stop "w3svc"'
+                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\Cams.WebApi\\bin\\Debug\\netcoreapp3.1\\Cams.WebApi.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.web" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\Web.config$" -enableRule:DoNotDelete -allowUntrusted=true'
+                bat 'net start "w3svc"'
+            }
+        }
+    }
+}
